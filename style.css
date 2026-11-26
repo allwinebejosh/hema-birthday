@@ -886,3 +886,30 @@ transform: none;
 }
 
 }
+/* EMERGENCY FIX: Keep all website content visible */
+.reveal,
+.reveal.is-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    filter: none !important;
+}
+
+/* Ensure page sections are visible */
+section,
+.hero,
+.hero-content,
+.memory-card,
+.letter-section,
+.cake-section,
+.closing-section {
+    visibility: visible;
+}
+
+/* Keep content above decorative backgrounds */
+main,
+section,
+footer {
+    position: relative;
+    z-index: 1;
+}
