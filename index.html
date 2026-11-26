@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8edf0">
+  <title>Happy Birthday, Hema ❤️</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="monogram" href="#home">H<span>♡</span></a>
+    <a class="music-toggle" id="musicToggle" href="#" aria-label="Toggle background music">♫ <span>Music</span></a>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <p class="eyebrow reveal">A little corner of the internet, made just for you</p>
+      <div class="heart-mark reveal">♡</div>
+      <h1 class="reveal">Happy Birthday,<br><em>Hema</em></h1>
+      <p class="hero-copy reveal">Today is all about celebrating the wonderful person you are<br class="desktop-only"> and all the happiness you bring into my life.</p>
+      <a class="button reveal" href="#our-story">Open your surprise <span>↓</span></a>
+      <p class="scroll-note">MADE WITH LOVE · JUST FOR YOU</p>
+    </section>
+
+    <section class="story section" id="our-story">
+      <p class="eyebrow">A life made brighter</p>
+      <h2>My favourite part<br>of every day is <em>you.</em></h2>
+      <p class="section-copy">Some moments become memories. Some people become home. You are both, Hema.</p>
+      <div class="memory-grid">
+        <article class="memory-card photo-card">
+          <img src="images/our-photo-1.jpg" alt="A favourite photograph of us" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="photo-placeholder"><span>♡</span><small>Add your favourite photo</small></div>
+          <div class="card-caption">A favourite moment</div>
+        </article>
+        <article class="memory-card note-card">
+          <span class="note-heart">✳</span>
+          <p>In a world full of ordinary days, you make even the simplest moments feel special.</p>
+          <small>ONE OF MY MANY REASONS TO SMILE</small>
+        </article>
+        <article class="memory-card photo-card">
+          <img src="images/our-photo-2.jpg" alt="Another favourite photograph of us" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="photo-placeholder"><span>♡</span><small>Add another memory</small></div>
+          <div class="card-caption">A memory to keep</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="letter-section section">
+      <p class="eyebrow">A note from my heart</p>
+      <h2>For you, <em>always.</em></h2>
+      <div class="letter">
+        <div class="letter-top">♡ &nbsp; A LITTLE BIRTHDAY LETTER</div>
+        <p>My dearest Hema,</p>
+        <p>Happy Birthday, my love. I hope this year brings you endless reasons to smile, dreams that come true, good health, and all the happiness your heart can hold.</p>
+        <p>Thank you for being you, for sharing this journey with me, and for making life more beautiful simply by being in it. I look forward to creating a thousand more memories together.</p>
+        <p>Today and every day, you deserve to feel loved, celebrated and cherished.</p>
+        <p class="signature">With all my love, <span>♡</span></p>
+      </div>
+    </section>
+
+    <section class="surprise section" id="surprise">
+      <p class="eyebrow">One last little surprise</p>
+      <h2>Make a <em>wish.</em></h2>
+      <p class="section-copy">Tap the cake and let this new year of your life begin with a little magic.</p>
+      <button class="cake-button" id="cakeButton" aria-label="Celebrate birthday">
+        <span class="candles"><i></i><i></i><i></i></span>
+        <span class="cake">🎂</span>
+        <span class="tap-hint">TAP TO CELEBRATE</span>
+      </button>
+      <p class="final-message" id="finalMessage" aria-live="polite">May all your wishes find their way to you. Happy Birthday, Hema! ❤️</p>
+    </section>
+  </main>
+
+  <footer>MADE WITH LOVE <span>♡</span> FOR HEMA</footer>
+  <audio id="backgroundMusic" src="music/birthday-song.mp3" loop></audio>
+  <script src="script.js"></script>
+</body>
+</html>
