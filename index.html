@@ -2,159 +2,251 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f8edf0">
-  <title>Happy Birthday, Hema ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#24151b">
+  <meta name="description" content="A little birthday surprise, made with love for Hema.">
+  <title>For Hema, With Love ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="ambient ambient-one"></div>
-  <div class="ambient ambient-two"></div>
-
-  <header class="topbar">
-    <a class="monogram" href="#home">H<span>♡</span></a>
-    <a class="music-toggle" id="musicToggle" href="#" aria-label="Toggle background music">♫ <span>Music</span></a>
+  <div class="grain"></div>
+  <header class="site-header">
+    <a class="brand" href="#top">H<span>♡</span></a>
+<button class="music-button" id="musicButton">
+  <span class="music-icon">♫</span>
+  <span id="musicLabel">Play music</span>
+</button>
   </header>
-
-  <main>
-    <section class="hero" id="home">
-      <p class="eyebrow reveal">A little corner of the internet, made just for you</p>
-      <div class="heart-mark reveal">♡</div>
-      <h1 class="reveal">Happy Birthday,<br><em>Hema</em></h1>
-      <p class="hero-copy reveal">
-        Today is all about celebrating the wonderful person you are<br class="desktop-only">
-        and all the happiness you bring into my life.
-      </p>
-      <a class="button reveal" href="#our-story">
-        Open your surprise <span>↓</span>
-      </a>
-      <p class="scroll-note">MADE WITH LOVE · JUST FOR YOU</p>
-    </section>
-
-    <section class="story section" id="our-story">
-      <p class="eyebrow">A life made brighter</p>
-      <h2>My favourite part<br>of every day is <em>you.</em></h2>
-
-      <p class="section-copy">
-        Some moments become memories. Some people become home.
-        You are both, Hema.
-      </p>
-
-      <div class="memory-grid">
-
-        <article class="memory-card photo-card">
-          <img
-            src="our-photo-1.jpg"
-            alt="A favourite photograph of us"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
-          >
-          <div class="photo-placeholder">
-            <span>♡</span>
-            <small>Add your favourite photo</small>
-          </div>
-          <div class="card-caption">A favourite moment</div>
-        </article>
-
-        <article class="memory-card note-card">
-          <span class="note-heart">✳</span>
-          <p>
-            In a world full of ordinary days, you make even
-            the simplest moments feel special.
-          </p>
-          <small>ONE OF MY MANY REASONS TO SMILE</small>
-        </article>
-
-        <article class="memory-card photo-card">
-          <img
-            src="our-photo-2.jpg"
-            alt="Another favourite photograph of us"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"
-          >
-          <div class="photo-placeholder">
-            <span>♡</span>
-            <small>Add another memory</small>
-          </div>
-          <div class="card-caption">A memory to keep</div>
-        </article>
-
-      </div>
-    </section>
-
-    <section class="letter-section section">
-      <p class="eyebrow">A note from my heart</p>
-      <h2>For you, <em>always.</em></h2>
-
-      <div class="letter">
-        <div class="letter-top">
-          ♡ &nbsp; A LITTLE BIRTHDAY LETTER
-        </div>
-
-        <p>My dearest Hema,</p>
-
-        <p>
-          Happy Birthday, my love. I hope this year brings you
-          endless reasons to smile, dreams that come true,
-          good health, and all the happiness your heart can hold.
-        </p>
-
-        <p>
-          Thank you for being you, for sharing this journey
-          with me, and for making life more beautiful simply
-          by being in it. I look forward to creating a thousand
-          more memories together.
-        </p>
-
-        <p>
-          Today and every day, you deserve to feel loved,
-          celebrated and cherished.
-        </p>
-
-        <p class="signature">
-          With all my love, <span>♡</span>
-        </p>
-      </div>
-    </section>
-
-    <section class="surprise section" id="surprise">
-      <p class="eyebrow">One last little surprise</p>
-      <h2>Make a <em>wish.</em></h2>
-
-      <p class="section-copy">
-        Tap the cake and let this new year of your life
-        begin with a little magic.
-      </p>
-
-      <button
-        class="cake-button"
-        id="cakeButton"
-        aria-label="Celebrate birthday"
+  <main id="top">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <p class="eyebrow hero-eyebrow reveal">
+    A little something, just for you
+  </p>
+  <div class="hero-heart reveal">♡</div>
+  <h1 class="hero-title reveal">
+    Happy Birthday,<br>
+    <em>Hema.</em>
+  </h1>
+  <p class="hero-copy reveal">
+    Today, the world celebrates you.<br>
+    And I get to celebrate the joy of having you in my life.
+  </p>
+  <a class="primary-button reveal" href="#memories">
+    Your surprise awaits <span>↓</span>
+  </a>
+  <span class="hero-foot">
+    MADE WITH LOVE · ONLY FOR YOU
+  </span>
+  <div class="hero-scroll"><span></span></div>
+</section>
+<!-- INTRODUCTION -->
+<section class="intro section-pad reveal">
+  <p class="eyebrow">To my favourite person</p>
+  <h2>
+    Life is sweeter<br>
+    with <em>you in it.</em>
+  </h2>
+  <p class="body-copy">
+    Not every beautiful thing needs a grand occasion.
+    But today is yours, and I wanted to make a little
+    place on the internet that belongs only to you.
+  </p>
+</section>
+<!-- OUR MEMORIES -->
+<section class="memories section-pad" id="memories">
+  <div class="section-heading reveal">
+    <p class="eyebrow">
+      Little moments, forever memories
+    </p>
+    <h2>
+      Us, in a few<br>
+      <em>favourite frames.</em>
+    </h2>
+    <p class="body-copy">
+      A couple of moments I never want to forget.
+    </p>
+  </div>
+  <article class="photo-story reveal">
+    <div class="photo-frame">
+      <img
+        src="our-photo-1.jpg"
+        alt="A lovely photograph of Hema and me together"
+        fetchpriority="high"
       >
-        <span class="candles">
-          <i></i><i></i><i></i>
-        </span>
-
-        <span class="cake">🎂</span>
-
-        <span class="tap-hint">TAP TO CELEBRATE</span>
-      </button>
-
-      <p class="final-message" id="finalMessage" aria-live="polite">
-        May all your wishes find their way to you.
-        Happy Birthday, Hema! ❤️
-      </p>
-    </section>
+      <span class="photo-number">01 / US</span>
+    </div>
+    <div class="photo-caption">
+      <span class="caption-mark">♡</span>
+      <div>
+        <h3>My favourite kind of together</h3>
+        <p>
+          Wherever we are, it feels a little more
+          like home with you beside me.
+        </p>
+      </div>
+    </div>
+  </article>
+  <article class="photo-story photo-story-second reveal">
+    <div class="photo-frame">
+      <img
+        src="our-photo-2.jpg"
+        alt="A close-up selfie of Hema and me"
+        loading="lazy"
+      >
+      <span class="photo-number">02 / ALWAYS</span>
+    </div>
+    <div class="photo-caption">
+      <span class="caption-mark">✦</span>
+      <div>
+        <h3>The little things</h3>
+        <p>
+          The smiles, the silly moments, and all
+          the memories still waiting for us.
+        </p>
+      </div>
+    </div>
+  </article>
+</section>
+<!-- ROMANTIC MESSAGE -->
+<section class="promise-section section-pad reveal">
+  <p class="eyebrow">A little reminder</p>
+  <div class="quote-mark">“</div>
+  <blockquote>
+    Of all the places life could take me,
+    my favourite place will always be
+    <em>by your side.</em>
+  </blockquote>
+  <span class="quote-rule"></span>
+  <p class="quote-signoff">
+    WITH LOVE, ALWAYS
+  </p>
+</section>
+<!-- LOVE LETTER -->
+<section class="letter-section section-pad" id="letter">
+  <div class="section-heading reveal">
+    <p class="eyebrow">A note from my heart</p>
+    <h2>
+      For you, <em>always.</em>
+    </h2>
+    <p class="body-copy">
+      A few words for the person who makes my world brighter.
+    </p>
+  </div>
+  <button
+    class="envelope reveal"
+    id="envelopeButton"
+    type="button"
+    aria-expanded="false"
+    aria-controls="loveLetter"
+  >
+    <span class="envelope-seal">
+      H <b>♡</b>
+    </span>
+    <span class="envelope-hint" id="envelopeHint">
+      Tap to open your letter
+    </span>
+  </button>
+  <article class="letter" id="loveLetter" hidden>
+    <p class="letter-kicker">
+      A BIRTHDAY LETTER
+    </p>
+    <p class="letter-dear">
+      My dearest Hema,
+    </p>
+    <p>
+      Happy Birthday, my love. I hope this new year
+      of your life brings you peace, good health,
+      beautiful surprises, and countless reasons to smile.
+    </p>
+    <p>
+      Thank you for sharing this journey with me.
+      I treasure the big milestones, but I treasure
+      the everyday moments with you just as much.
+      I look forward to all the places we'll go,
+      the things we'll learn, and the memories
+      we'll make together.
+    </p>
+    <p>
+      Whatever this year brings, I hope you always
+      remember how deeply loved, valued, and cherished
+      you are.
+    </p>
+    <p class="letter-signature">
+      With all my love,<br>
+      <span>Yours, always ♡</span>
+    </p>
+  </article>
+</section>
+<!-- BIRTHDAY CAKE -->
+<section class="birthday-section section-pad" id="birthday">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Now, make a wish</p>
+    <h2>
+      A little birthday<br>
+      <em>magic.</em>
+    </h2>
+    <p class="body-copy">
+      Take a breath, make a wish, and tap the cake
+      when you're ready.
+    </p>
+  </div>
+  <button
+    class="cake-button reveal"
+    id="cakeButton"
+    type="button"
+    aria-label="Celebrate birthday"
+  >
+    <span class="cake-glow"></span>
+    <span class="cake-emoji">🎂</span>
+    <span class="cake-hint" id="cakeHint">
+      TAP TO BLOW OUT THE CANDLES
+    </span>
+  </button>
+  <p class="birthday-message" id="birthdayMessage">
+    May this year be as wonderful as you are, Hema.
+    Happy Birthday! ♡
+  </p>
+</section>
+<!-- CLOSING -->
+<section class="closing-section section-pad reveal">
+  <div class="closing-photo">
+    <img
+      src="our-photo-1.jpg"
+      alt="Hema and me together"
+      loading="lazy"
+    >
+  </div>
+  <p class="eyebrow">
+    And here's to everything ahead
+  </p>
+  <h2>
+    My today.<br>
+    My tomorrow.<br>
+    <em>My always.</em>
+  </h2>
+  <p class="closing-line">
+    I love doing life with you.
+  </p>
+  <span class="closing-heart">♡</span>
+</section>
   </main>
-
-  <footer>
-    MADE WITH LOVE <span>♡</span> FOR HEMA
+  <footer class="site-footer">
+    MADE WITH ALL MY LOVE <span>♡</span> FOR HEMA
   </footer>
+  <!-- Optional music file: birthday-song.mp3 -->
 
-  <audio
-    id="backgroundMusic"
-    src="music/birthday-song.mp3"
-    loop
-  ></audio>
+<audio
+id=“birthdayMusic”
+src=“birthday-song.mp3”
+preload=“none”
+loop
 
+</audio>
   <script src="script.js"></script>
 </body>
 </html>
