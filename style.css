@@ -7,9 +7,14 @@
   --ink: #3d2930;
   --muted: #8b7477;
   --white: #fffdfb;
+
   --serif: "Playfair Display", Georgia, serif;
   --sans: "DM Sans", Arial, sans-serif;
 }
+
+/* ========================================
+   GLOBAL
+======================================== */
 
 * {
   box-sizing: border-box;
@@ -29,7 +34,8 @@ body {
   overflow-x: hidden;
 }
 
-button, a {
+button,
+a {
   font: inherit;
 }
 
@@ -37,6 +43,14 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+img {
+  max-width: 100%;
+}
+
+/* ========================================
+   NAVIGATION
+======================================== */
 
 .topbar {
   height: 66px;
@@ -62,15 +76,26 @@ a {
 }
 
 .music-button {
-  border: 1px solid rgba(84, 43, 56, .2);
-  background: rgba(255, 253, 251, .6);
+  border: 1px solid rgba(84, 43, 56, 0.2);
+  background: rgba(255, 253, 251, 0.6);
   color: var(--burgundy);
   border-radius: 30px;
   padding: 9px 16px;
   font-size: 12px;
   cursor: pointer;
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: 0.3s ease;
 }
+
+.music-button:hover {
+  background: var(--burgundy);
+  color: white;
+}
+
+/* ========================================
+   HERO
+======================================== */
 
 .hero {
   min-height: 100svh;
@@ -82,6 +107,7 @@ a {
   text-align: center;
   position: relative;
   overflow: hidden;
+
   background:
     radial-gradient(ellipse at 50% 35%, #fff9f5 0%, transparent 55%),
     linear-gradient(145deg, #f8eee8, #f5e6e2 55%, #f0dfd8);
@@ -92,7 +118,7 @@ a {
   width: 360px;
   height: 360px;
   border-radius: 50%;
-  background: rgba(205, 133, 139, .12);
+  background: rgba(205, 133, 139, 0.12);
   filter: blur(70px);
   top: 20%;
   pointer-events: none;
@@ -121,7 +147,8 @@ a {
   font-weight: 500;
 }
 
-h1 em, h2 em {
+h1 em,
+h2 em {
   color: var(--rose-dark);
   font-weight: 500;
 }
@@ -138,7 +165,7 @@ h1 em, h2 em {
   border-radius: 40px;
   padding: 14px 25px;
   font-size: 12px;
-  transition: .3s ease;
+  transition: 0.3s ease;
 }
 
 .primary-button:hover {
@@ -158,14 +185,12 @@ h1 em, h2 em {
   color: var(--muted);
 }
 
+/* ========================================
+   COMMON SECTIONS
+======================================== */
+
 .section {
   padding: 105px 24px;
-}
-
-.intro {
-  max-width: 760px;
-  margin: auto;
-  text-align: center;
 }
 
 h2 {
@@ -174,6 +199,16 @@ h2 {
   line-height: 1.2;
   font-weight: 500;
   color: var(--burgundy);
+}
+
+/* ========================================
+   INTRODUCTION
+======================================== */
+
+.intro {
+  max-width: 760px;
+  margin: auto;
+  text-align: center;
 }
 
 .intro h2 {
@@ -186,6 +221,10 @@ h2 {
   color: var(--muted);
   font-size: 14px;
 }
+
+/* ========================================
+   OUR STORY
+======================================== */
 
 .story {
   background: #f1e5df;
@@ -252,10 +291,10 @@ h2 {
 .timeline-card {
   position: relative;
   padding: 30px;
-  background: rgba(255, 253, 251, .8);
-  border: 1px solid rgba(157, 81, 94, .09);
+  background: rgba(255, 253, 251, 0.8);
+  border: 1px solid rgba(157, 81, 94, 0.09);
   border-radius: 18px;
-  box-shadow: 0 15px 45px rgba(84, 43, 56, .045);
+  box-shadow: 0 15px 45px rgba(84, 43, 56, 0.045);
 }
 
 .timeline-number {
@@ -295,12 +334,25 @@ h2 {
   font-weight: 700;
 }
 
-.photo-frame, .gallery-photo, .closing-photo {
+/* ========================================
+   PHOTO FRAMES AND PLACEHOLDERS
+======================================== */
+
+/*
+  Images remain hidden until JavaScript confirms
+  that the image has loaded successfully.
+*/
+
+.photo-frame,
+.gallery-photo,
+.closing-photo {
   position: relative;
   overflow: hidden;
   background: #ead8d2;
   border-radius: 13px;
 }
+
+/* Timeline photographs */
 
 .photo-frame {
   margin-top: 24px;
@@ -310,9 +362,19 @@ h2 {
 .photo-frame img {
   display: block;
   width: 100%;
+  height: auto;
   max-height: 440px;
   object-fit: cover;
+  position: relative;
+  z-index: 2;
+  visibility: hidden;
 }
+
+.photo-frame img.image-loaded {
+  visibility: visible;
+}
+
+/* Placeholder */
 
 .photo-placeholder {
   position: absolute;
@@ -326,6 +388,7 @@ h2 {
   padding: 20px;
   color: var(--rose-dark);
   background: linear-gradient(145deg, #f5e7e1, #ead4d0);
+  z-index: 1;
 }
 
 .photo-placeholder span {
@@ -342,16 +405,17 @@ h2 {
   color: var(--muted);
 }
 
-.photo-frame img:not([src=""]) {
-  position: relative;
-  z-index: 1;
-}
+/* Hide placeholder when image loads */
 
 .photo-frame img.image-loaded + .photo-placeholder,
 .gallery-photo img.image-loaded + .photo-placeholder,
 .closing-photo img.image-loaded + .photo-placeholder {
   display: none;
 }
+
+/* ========================================
+   PRAYER SECTION
+======================================== */
 
 .prayer-section {
   text-align: center;
@@ -388,8 +452,8 @@ h2 {
   max-width: 700px;
   margin: 35px auto;
   padding: 30px;
-  border-top: 1px solid rgba(255,255,255,.18);
-  border-bottom: 1px solid rgba(255,255,255,.18);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   color: #fff5f1;
   font-family: var(--serif);
   font-size: clamp(17px, 2.5vw, 21px);
@@ -401,6 +465,10 @@ h2 {
   color: #e8b9b8;
   font-size: 11px;
 }
+
+/* ========================================
+   PHOTO GALLERY
+======================================== */
 
 .gallery {
   background: var(--cream);
@@ -415,27 +483,48 @@ h2 {
 }
 
 .gallery-photo {
+  height: 300px;
   min-height: 250px;
+  position: relative;
+  border-radius: 18px;
+  background: #ead8d2;
 }
 
+/* Gallery image fills the entire photo card */
+
 .gallery-photo img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  min-height: 250px;
-  display: block;
+  min-height: 0;
   object-fit: cover;
+  display: block;
+  z-index: 2;
+  visibility: hidden;
 }
+
+.gallery-photo img.image-loaded {
+  visibility: visible;
+}
+
+/* Gallery captions */
 
 .gallery-photo > span {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   left: 15px;
   bottom: 15px;
   color: white;
   font-size: 9px;
   letter-spacing: 2px;
   text-shadow: 0 2px 8px #38212b;
+  pointer-events: none;
 }
+
+/* ========================================
+   QUOTE SECTION
+======================================== */
 
 .quote-section {
   text-align: center;
@@ -460,6 +549,10 @@ h2 {
   color: var(--rose-dark);
   margin-top: 30px;
 }
+
+/* ========================================
+   LOVE LETTER
+======================================== */
 
 .letter-section {
   text-align: center;
@@ -498,8 +591,8 @@ h2 {
   color: white;
   font-family: var(--serif);
   font-size: 25px;
-  box-shadow: 0 15px 30px rgba(84,43,56,.12);
-  transition: .3s;
+  box-shadow: 0 15px 30px rgba(84, 43, 56, 0.12);
+  transition: 0.3s;
 }
 
 .envelope-button:hover .envelope-icon {
@@ -520,7 +613,7 @@ h2 {
   border: 1px solid #ecd9d3;
   border-radius: 15px;
   text-align: left;
-  box-shadow: 0 15px 50px rgba(84,43,56,.06);
+  box-shadow: 0 15px 50px rgba(84, 43, 56, 0.06);
 }
 
 .love-letter[hidden] {
@@ -555,6 +648,10 @@ h2 {
   font-size: 18px !important;
 }
 
+/* ========================================
+   BIRTHDAY CAKE
+======================================== */
+
 .cake-section {
   text-align: center;
   background: #f1e5df;
@@ -582,14 +679,14 @@ h2 {
 .cake-candles {
   font-size: 26px;
   letter-spacing: 5px;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .cake-emoji {
   font-size: 100px;
   line-height: 1.5;
-  filter: drop-shadow(0 10px 10px rgba(84,43,56,.1));
-  transition: .3s;
+  filter: drop-shadow(0 10px 10px rgba(84, 43, 56, 0.1));
+  transition: 0.3s;
 }
 
 .cake-button:hover .cake-emoji {
@@ -609,6 +706,10 @@ h2 {
   margin-top: 25px;
 }
 
+/* ========================================
+   CLOSING SECTION
+======================================== */
+
 .closing-section {
   padding: 100px 24px 50px;
   text-align: center;
@@ -626,6 +727,13 @@ h2 {
   width: 100%;
   max-height: 450px;
   object-fit: cover;
+  position: relative;
+  z-index: 2;
+  visibility: hidden;
+}
+
+.closing-photo img.image-loaded {
+  visibility: visible;
 }
 
 .closing-section h2 {
@@ -650,6 +758,10 @@ h2 {
   font-size: 9px;
 }
 
+/* ========================================
+   SCROLL REVEAL
+======================================== */
+
 .reveal {
   opacity: 1;
   transform: none;
@@ -660,12 +772,29 @@ h2 {
   transform: none;
 }
 
+/* ========================================
+   ANIMATIONS
+======================================== */
+
 @keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  15% { transform: scale(1.12); }
-  30% { transform: scale(1); }
-  45% { transform: scale(1.08); }
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1.12);
+  }
+
+  30% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.08);
+  }
 }
+
+/* Confetti */
 
 .confetti {
   position: fixed;
@@ -682,7 +811,18 @@ h2 {
   }
 }
 
+/* ========================================
+   TABLET AND MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+  .gallery-photo {
+    height: 260px;
+  }
+}
+
 @media (max-width: 600px) {
+
   .topbar {
     padding: 0 22px;
   }
@@ -702,6 +842,8 @@ h2 {
   .section-heading {
     margin-bottom: 45px;
   }
+
+  /* Timeline */
 
   .timeline::before {
     left: 10px;
@@ -732,13 +874,16 @@ h2 {
     min-height: 155px;
   }
 
+  /* Gallery */
+
   .gallery-grid {
     gap: 10px;
   }
 
-  .gallery-photo,
-  .gallery-photo img {
+  .gallery-photo {
+    height: 180px;
     min-height: 180px;
+    border-radius: 15px;
   }
 
   .gallery-photo > span {
@@ -748,80 +893,45 @@ h2 {
     bottom: 8px;
   }
 
+  /* Prayer */
+
   .prayer-section blockquote {
     padding: 24px 8px;
     font-size: 17px;
   }
 
+  /* Letter */
+
   .love-letter {
     padding: 27px 22px;
   }
 
+  /* Cake */
+
   .cake-emoji {
     font-size: 82px;
   }
+
+  /* Closing */
 
   .closing-section {
     padding-top: 75px;
   }
 }
 
+/* ========================================
+   ACCESSIBILITY
+======================================== */
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-  }
-}
-/* FIX: PHOTO PLACEHOLDERS AND IMAGE LOADING */
-
-.photo-frame img,
-.gallery-photo img,
-.closing-photo img {
-  display: none;
-}
-
-.photo-frame img.image-loaded,
-.gallery-photo img.image-loaded,
-.closing-photo img.image-loaded {
-  display: block;
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.photo-frame .photo-placeholder,
-.gallery-photo .photo-placeholder,
-.closing-photo .photo-placeholder {
-  display: flex;
-  z-index: 1;
-}
-
-.photo-frame img.image-loaded + .photo-placeholder,
-.gallery-photo img.image-loaded + .photo-placeholder,
-.closing-photo img.image-loaded + .photo-placeholder {
-  display: none;
-}
-
-.gallery-photo {
-  min-height: 250px;
-}
-
-.gallery-photo img {
-  min-height: 250px;
-}
-
-@media (max-width: 600px) {
-  .gallery-photo {
-    min-height: 180px;
-  }
-
-  .gallery-photo img {
-    min-height: 180px;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
