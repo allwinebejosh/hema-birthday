@@ -1,184 +1,128 @@
-// ======================================
-// BACKGROUND MUSIC
-// ======================================
+// HEMA'S BIRTHDAY - interactions
+document.addEventListener("DOMContentLoaded", () => {
+  const music = document.getElementById("birthdayMusic");
+  const musicButton = document.getElementById("musicButton");
+  const musicLabel = document.getElementById("musicLabel");
 
-const music = document.getElementById(“birthdayMusic”);
+  // Background music
+  if (musicButton && music && musicLabel) {
+    musicButton.addEventListener("click", async () => {
+      if (music.paused) {
+        try {
+          await music.play();
+          musicLabel.textContent = "Music on";
+          musicButton.setAttribute("aria-label", "Pause background music");
+        } catch (error) {
+          musicLabel.textContent = "Add birthday-song.mp3";
+        }
+      } else {
+        music.pause();
+        musicLabel.textContent = "Play music";
+        musicButton.setAttribute("aria-label", "Play background music");
+      }
+    });
+  }
 
-const musicButton = document.getElementById(“musicButton”);
+  // Reveal animation is optional.
+  // CSS keeps content visible even if JavaScript fails.
+  const revealItems = document.querySelectorAll(".reveal");
 
-const musicLabel = document.getElementById(“musicLabel”);
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries, currentObserver) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          currentObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
 
-musicButton.addEventListener(“click”, async () => {
+    revealItems.forEach(item => observer.observe(item));
+  } else {
+    revealItems.forEach(item => item.classList.add("is-visible"));
+  }
 
-if (music.paused) {
+  // Interactive birthday letter
+  const envelopeButton = document.getElementById("envelopeButton");
+  const loveLetter = document.getElementById("loveLetter");
+  const envelopeHint = document.getElementById("envelopeHint");
 
-try {
-  await music.play();
-  musicLabel.textContent = "Music on";
-  musicButton.setAttribute(
-    "aria-label",
-    "Pause background music"
-  );
-} catch (error) {
-  musicLabel.textContent = "Add birthday-song.mp3";
-}
+  if (envelopeButton && loveLetter && envelopeHint) {
+    envelopeButton.addEventListener("click", () => {
+      const isOpen =
+        envelopeButton.getAttribute("aria-expanded") === "true";
 
-} else {
+      envelopeButton.setAttribute("aria-expanded", String(!isOpen));
+      loveLetter.hidden = isOpen;
 
-music.pause();
-musicLabel.textContent = "Play music";
-musicButton.setAttribute(
-  "aria-label",
-  "Play background music"
-);
+      envelopeHint.textContent = isOpen
+        ? "Tap to open your letter"
+        : "Your letter is open ♡";
 
-}
+      if (!isOpen) {
+        setTimeout(() => {
+          loveLetter.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+        }, 80);
+      }
+    });
+  }
 
-});
+  // Birthday cake celebration
+  const cakeButton = document.getElementById("cakeButton");
+  const cakeHint = document.getElementById("cakeHint");
+  const birthdayMessage = document.getElementById("birthdayMessage");
 
-// ======================================
-// SCROLL REVEAL ANIMATIONS
-// ======================================
+  if (cakeButton && cakeHint && birthdayMessage) {
+    let celebrated = false;
 
-const revealItems = document.querySelectorAll(”.reveal”);
+    cakeButton.addEventListener("click", () => {
+      if (celebrated) return;
 
-if (“IntersectionObserver” in window) {
+      celebrated = true;
 
-const revealObserver = new IntersectionObserver(
+      cakeHint.textContent = "WISH MADE ♡";
 
-(entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("is-visible");
-      observer.unobserve(entry.target);
-    }
-  });
-},
-{
-  threshold: 0.12
-}
+      birthdayMessage.textContent =
+        "May every beautiful wish you make find its way to you. Happy Birthday, Hema! ♡";
 
-);
+      const symbols = ["✦", "♡", "✧", "•", "✿"];
+      const colors = [
+        "#b97887",
+        "#d7b98a",
+        "#f0cbd0",
+        "#fff4e8"
+      ];
 
-revealItems.forEach(item => {
+      // Create falling confetti
+      for (let i = 0; i < 42; i++) {
+        const piece = document.createElement("span");
 
-revealObserver.observe(item);
+        piece.className = "confetti-piece";
 
-});
+        piece.textContent =
+          symbols[Math.floor(Math.random() * symbols.length)];
 
-} else {
+        piece.style.left = `${Math.random() * 100}vw`;
+        piece.style.color = colors[i % colors.length];
 
-revealItems.forEach(item => {
+        piece.style.fontSize =
+          `${10 + Math.random() * 13}px`;
 
-item.classList.add("is-visible");
+        piece.style.setProperty(
+          "--drift",
+          `${Math.random() * 140 - 70}px`
+        );
 
-});
+        piece.style.animationDuration =
+          `${2.3 + Math.random() * 2.2}s`;
 
-}
+        document.body.appendChild(piece);
 
-// ======================================
-// INTERACTIVE LOVE LETTER
-// ======================================
-
-const envelopeButton =
-document.getElementById(“envelopeButton”);
-
-const loveLetter =
-document.getElementById(“loveLetter”);
-
-const envelopeHint =
-document.getElementById(“envelopeHint”);
-
-envelopeButton.addEventListener(“click”, () => {
-
-const isOpen =
-envelopeButton.getAttribute(“aria-expanded”) === “true”;
-
-envelopeButton.setAttribute(
-“aria-expanded”,
-String(!isOpen)
-);
-
-loveLetter.hidden = isOpen;
-
-envelopeHint.textContent = isOpen
-? “Tap to open your letter”
-: “Your letter is open ♡”;
-
-if (!isOpen) {
-
-setTimeout(() => {
-  loveLetter.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  });
-}, 80);
-
-}
-
-});
-
-// ======================================
-// BIRTHDAY CAKE CELEBRATION
-// ======================================
-
-const cakeButton =
-document.getElementById(“cakeButton”);
-
-const cakeHint =
-document.getElementById(“cakeHint”);
-
-const birthdayMessage =
-document.getElementById(“birthdayMessage”);
-
-let celebrated = false;
-
-cakeButton.addEventListener(“click”, () => {
-
-if (celebrated) return;
-
-celebrated = true;
-
-cakeHint.textContent = “WISH MADE ♡”;
-
-birthdayMessage.textContent =
-“May every beautiful wish you make find its way to you. Happy Birthday, Hema! ♡”;
-
-const symbols = [
-“✦”,
-“♡”,
-“✧”,
-“•”,
-“✿”
-];
-
-for (let i = 0; i < 42; i++) {
-
-const piece = document.createElement("span");
-piece.className = "confetti-piece";
-piece.textContent =
-  symbols[Math.floor(Math.random() * symbols.length)];
-piece.style.left =
-  `${Math.random() * 100}vw`;
-piece.style.color = [
-  "#b97887",
-  "#d7b98a",
-  "#f0cbd0",
-  "#fff4e8"
-][i % 4];
-piece.style.fontSize =
-  `${10 + Math.random() * 13}px`;
-piece.style.setProperty(
-  "--drift",
-  `${Math.random() * 140 - 70}px`
-);
-piece.style.animationDuration =
-  `${2.3 + Math.random() * 2.2}s`;
-document.body.appendChild(piece);
-window.setTimeout(() => {
-  piece.remove();
-}, 5000);
-
-}
-
+        setTimeout(() => piece.remove(), 5000);
+      }
+    });
+  }
 });
