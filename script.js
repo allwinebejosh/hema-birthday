@@ -1,128 +1,143 @@
-// HEMA'S BIRTHDAY - interactions
 document.addEventListener("DOMContentLoaded", () => {
+
+  // PHOTO PLACEHOLDERS
+  document.querySelectorAll("img").forEach((img) => {
+    const markLoaded = () => {
+      if (img.naturalWidth > 0) {
+        img.classList.add("image-loaded");
+      }
+    };
+
+    img.addEventListener("load", markLoaded);
+    img.addEventListener("error", () => {
+      img.classList.remove("image-loaded");
+    });
+
+    if (img.complete) {
+      markLoaded();
+    }
+  });
+
+  // BACKGROUND MUSIC
   const music = document.getElementById("birthdayMusic");
   const musicButton = document.getElementById("musicButton");
   const musicLabel = document.getElementById("musicLabel");
 
-  // Background music
-  if (musicButton && music && musicLabel) {
+  if (music && musicButton) {
     musicButton.addEventListener("click", async () => {
       if (music.paused) {
         try {
           await music.play();
-          musicLabel.textContent = "Music on";
-          musicButton.setAttribute("aria-label", "Pause background music");
+          musicLabel.textContent = "Pause music";
         } catch (error) {
-          musicLabel.textContent = "Add birthday-song.mp3";
+          musicLabel.textContent = "Music unavailable";
         }
       } else {
         music.pause();
         musicLabel.textContent = "Play music";
-        musicButton.setAttribute("aria-label", "Play background music");
       }
     });
   }
 
-  // Reveal animation is optional.
-  // CSS keeps content visible even if JavaScript fails.
+  // SCROLL REVEAL
   const revealItems = document.querySelectorAll(".reveal");
 
   if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver((entries, currentObserver) => {
-      entries.forEach(entry => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
-          currentObserver.unobserve(entry.target);
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, {
+      threshold: 0.08
+    });
 
-    revealItems.forEach(item => observer.observe(item));
+    revealItems.forEach((item) => observer.observe(item));
   } else {
-    revealItems.forEach(item => item.classList.add("is-visible"));
+    revealItems.forEach((item) => item.classList.add("is-visible"));
   }
 
-  // Interactive birthday letter
+  // INTERACTIVE LOVE LETTER
   const envelopeButton = document.getElementById("envelopeButton");
   const loveLetter = document.getElementById("loveLetter");
   const envelopeHint = document.getElementById("envelopeHint");
 
-  if (envelopeButton && loveLetter && envelopeHint) {
+  if (envelopeButton && loveLetter) {
     envelopeButton.addEventListener("click", () => {
-      const isOpen =
-        envelopeButton.getAttribute("aria-expanded") === "true";
+      const isOpening = loveLetter.hidden;
 
-      envelopeButton.setAttribute("aria-expanded", String(!isOpen));
-      loveLetter.hidden = isOpen;
+      loveLetter.hidden = !isOpening;
+      envelopeButton.setAttribute("aria-expanded", String(isOpening));
 
-      envelopeHint.textContent = isOpen
-        ? "Tap to open your letter"
-        : "Your letter is open ♡";
+      envelopeButton.querySelector(".envelope-icon").textContent =
+        isOpening ? "♡ H ♡" : "H ♡";
 
-      if (!isOpen) {
+      envelopeButton.querySelector("span:last-child").textContent =
+        isOpening ? "Close your letter" : "Tap to open your letter";
+
+      envelopeHint.textContent = isOpening
+        ? "A little message, written just for you."
+        : "There's something I want you to read.";
+
+      if (isOpening) {
         setTimeout(() => {
           loveLetter.scrollIntoView({
             behavior: "smooth",
             block: "center"
           });
-        }, 80);
+        }, 150);
       }
     });
   }
 
-  // Birthday cake celebration
+  // BIRTHDAY CAKE AND CONFETTI
   const cakeButton = document.getElementById("cakeButton");
   const cakeHint = document.getElementById("cakeHint");
   const birthdayMessage = document.getElementById("birthdayMessage");
 
-  if (cakeButton && cakeHint && birthdayMessage) {
-    let celebrated = false;
+  let cakeClicked = false;
 
+  if (cakeButton) {
     cakeButton.addEventListener("click", () => {
-      if (celebrated) return;
+      if (cakeClicked) return;
+      cakeClicked = true;
 
-      celebrated = true;
+      const candles = cakeButton.querySelector(".cake-candles");
+      const action = cakeButton.querySelector(".cake-action");
 
-      cakeHint.textContent = "WISH MADE ♡";
+      candles.textContent = "✨ ✨ ✨";
+      action.textContent = "YOUR WISH IS MADE ♡";
 
-      birthdayMessage.textContent =
-        "May every beautiful wish you make find its way to you. Happy Birthday, Hema! ♡";
+      cakeHint.textContent = "May all your beautiful wishes come true.";
+      birthdayMessage.hidden = false;
 
-      const symbols = ["✦", "♡", "✧", "•", "✿"];
-      const colors = [
-        "#b97887",
-        "#d7b98a",
-        "#f0cbd0",
-        "#fff4e8"
-      ];
-
-      // Create falling confetti
-      for (let i = 0; i < 42; i++) {
-        const piece = document.createElement("span");
-
-        piece.className = "confetti-piece";
-
-        piece.textContent =
-          symbols[Math.floor(Math.random() * symbols.length)];
-
-        piece.style.left = `${Math.random() * 100}vw`;
-        piece.style.color = colors[i % colors.length];
-
-        piece.style.fontSize =
-          `${10 + Math.random() * 13}px`;
-
-        piece.style.setProperty(
-          "--drift",
-          `${Math.random() * 140 - 70}px`
-        );
-
-        piece.style.animationDuration =
-          `${2.3 + Math.random() * 2.2}s`;
-
-        document.body.appendChild(piece);
-
-        setTimeout(() => piece.remove(), 5000);
-      }
+      launchConfetti();
     });
   }
+
+  function launchConfetti() {
+    const symbols = ["♡", "✦", "✧", "♥"];
+    const colors = ["#c77d83", "#d9a8a7", "#e9c8c2", "#9d515e", "#d5b18c"];
+
+    for (let i = 0; i < 65; i++) {
+      const piece = document.createElement("span");
+      piece.className = "confetti";
+      piece.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+      piece.style.left = Math.random() * 100 + "vw";
+      piece.style.color = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.fontSize = (12 + Math.random() * 15) + "px";
+      piece.style.animationDuration = (2.5 + Math.random() * 2) + "s";
+      piece.style.animationDelay = (Math.random() * 0.8) + "s";
+
+      document.body.appendChild(piece);
+
+      setTimeout(() => {
+        piece.remove();
+      }, 5500);
+    }
+  }
+
 });
